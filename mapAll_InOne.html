@@ -3,7 +3,16 @@
 <head>
     <style type="text/css">
         html, body { height: 100%; width: 100%; margin: 0; padding: 0;}
-        #map {width: 640px; height: 480px; margin: 15px;}
+        #map {
+            overflow: hidden;
+            border-radius: 50px;
+            position: relative;
+            z-index: 99;
+            width: 640px;
+            height: 480px;
+            border: none;
+            margin: auto;
+        }
     </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +30,164 @@
         var infoWindows = [];
         var map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 24.14849, lng: 120.6613},
-            zoom: 13
+            zoom: 13,
+            styles: [{
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#212121"
+                    }]
+                }, {
+                    "elementType": "labels.icon",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                }, {
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#757575"
+                    }]
+                }, {
+                    "elementType": "labels.text.stroke",
+                    "stylers": [{
+                        "color": "#212121"
+                    }]
+                }, {
+                    "featureType": "administrative",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#757575"
+                    }, {
+                        "visibility": "off"
+                    }]
+                }, {
+                    "featureType": "administrative.country",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#9e9e9e"
+                    }]
+                }, {
+                    "featureType": "administrative.land_parcel",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                }, {
+                    "featureType": "administrative.locality",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#bdbdbd"
+                    }]
+                }, {
+                    "featureType": "poi",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                }, {
+                    "featureType": "poi",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#757575"
+                    }]
+                }, {
+                    "featureType": "poi.park",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#181818"
+                    }]
+                }, {
+                    "featureType": "poi.park",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#616161"
+                    }]
+                }, {
+                    "featureType": "poi.park",
+                    "elementType": "labels.text.stroke",
+                    "stylers": [{
+                        "color": "#1b1b1b"
+                    }]
+                }, {
+                    "featureType": "road",
+                    "elementType": "geometry.fill",
+                    "stylers": [{
+                        "color": "#2c2c2c"
+                    }]
+                }, {
+                    "featureType": "road",
+                    "elementType": "labels.icon",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                }, {
+                    "featureType": "road",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#8a8a8a"
+                    }]
+                }, {
+                    "featureType": "road.arterial",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#373737"
+                    }]
+                }, {
+                    "featureType": "road.arterial",
+                    "elementType": "labels",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                }, {
+                    "featureType": "road.highway",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#3c3c3c"
+                    }]
+                }, {
+                    "featureType": "road.highway",
+                    "elementType": "labels",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                }, {
+                    "featureType": "road.highway.controlled_access",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#4e4e4e"
+                    }]
+                }, {
+                    "featureType": "road.local",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                }, {
+                    "featureType": "road.local",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#616161"
+                    }]
+                }, {
+                    "featureType": "transit",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                }, {
+                    "featureType": "transit",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#757575"
+                    }]
+                }, {
+                    "featureType": "water",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#000000"
+                    }]
+                }, {
+                    "featureType": "water",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#3d3d3d"
+                    }]
+                }]
         });
         var geocoder = new google.maps.Geocoder();
         console.log(geocoder);
@@ -29,7 +195,97 @@
         
         //info windows
         var info_config = [
-            
+            // taipei
+            // 1
+            '<h2>享食站 半路咖啡 - Food Hub Halfway Cafe</h2>'+
+            '<span><a href="https://www.facebook.com/groups/FHHWK">https://www.facebook.com/groups/FHHWK</a></span><br/>'+
+            '<span>地址：台北市大安區羅斯福路三段269巷51弄9號一樓</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 2
+            '<h2>515 Cafe&amp;books 享食冰箱</h2>'+
+            '<span><a href="https://www.facebook.com/groups/137047096987597">https://www.facebook.com/groups/137047096987597</a></span><br/>'+
+            '<span>地址：台北市大安區永康街75巷22號</span><br/>'+
+            '<span>時間：週一至週日11:30 - 23:00</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 3
+            '<h2>RobinFood 羅濱富</h2>'+
+            '<span><a href="https://www.facebook.com/Share.RobinFood/">https://www.facebook.com/Share.RobinFood/</a></span><br/>'+
+            '<span>地址：台北市大安區仁愛路四段280號8樓（國泰綜合醫院）</span><br/>'+
+            '<span>時間：週一至週五 08:00 - 20:30</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 4
+            '<h2>書屋花甲</h2>'+
+            '<span><a href="https://www.facebook.com/housebook60/">https://www.facebook.com/housebook60/</a></span><br/>'+
+            '<span>地址：台北市中正區中華路二段307巷42號1樓</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 5
+            '<h2>社子島愛心free食物銀行</h2>'+
+            '<span><a href="https://www.facebook.com/392100044493153/">https://www.facebook.com/392100044493153/</a></span><br/>'+
+            '<span>地址：台北市士林區延平北路七段106、107巷</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 6
+            '<h2>新營里辦公室</h2>'+
+            '<span><a href="https://li.taipei/cp.aspx?n=D1206834DF401BE7">https://li.taipei/cp.aspx?n=D1206834DF401BE7</a></span><br/>'+
+            '<span>地址：台北市中正區寧波東街16巷2號</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 7
+            '<h2>永昌里辦公處</h2>'+
+            '<span><a href="https://li.taipei/cp.aspx?n=1B6CCF78F14C7580">https://li.taipei/cp.aspx?n=1B6CCF78F14C7580</a></span><br/>'+
+            '<span>地址：台北市中正區汀州路一段242巷5號</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 8
+            '<h2>螢圃里辦公室</h2>'+
+            '<span><a href="https://li.taipei/cp.aspx?n=300F6F13C72E308E">https://li.taipei/cp.aspx?n=300F6F13C72E308E</a></span><br/>'+
+            '<span>地址：台北市中正區重慶南路3段83巷3號</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 9
+            '<h2>梅花里辦公室</h2>'+
+            '<span><a href="https://li.taipei/cp.aspx?n=887645945840165A">https://li.taipei/cp.aspx?n=887645945840165A</a></span><br/>'+
+            '<span>地址：台北市中正區紹興北街23號</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 10
+            '<h2>頂東里辦公室</h2>'+
+            '<span><a href="https://li.taipei/cp.aspx?n=3187676576FB61A2">https://li.taipei/cp.aspx?n=3187676576FB61A2</a></span><br/>'+
+            '<span>地址：台北市中正區晉江街112巷2弄6號</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 11
+            '<h2>林興里辦公處</h2>'+
+            '<span><a href="https://li.taipei/cp.aspx?n=C39F0D639713B316">https://li.taipei/cp.aspx?n=C39F0D639713B316</a></span><br/>'+
+            '<span>地址：台北市中正區水源路21號</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+
+            // xinbei
+            // 1
+            '<h2>板橋愛心free食物銀行</h2>'+
+            '<span><a href="https://www.facebook.com/Love.Free.Food/">https://www.facebook.com/Love.Free.Food/</a></span><br/>'+
+            '<span>地址：新北市板橋區莒光路51巷22號</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 2
+            '<h2>分享愛社團-板橋愛心冰箱站</h2>'+
+            '<span><a href="https://www.facebook.com/133147634012858/">https://www.facebook.com/133147634012858/</a></span><br/>'+
+            '<span>地址：新北市板橋區僑中一街125巷6弄2號</span><br/>'+
+            '<span>時間：09:00 - 20:00</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 3
+            '<h2>愛心冰箱新莊站</h2>'+
+            '<span><a href="https://www.facebook.com/LOVEREFRIGERATOR/">https://www.facebook.com/LOVEREFRIGERATOR/</a></span><br/>'+
+            '<span>地址：新北市新莊區新北大道七段726號</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+
             // taichung
             // 1
             '<h2>共享冰箱 Food Sharing Station@自己的房間</h2>'+
@@ -49,15 +305,142 @@
             '<span>地址：台中市北區中清路一段296號</span><br/>',
             // '<img class="infoImg" src=""><br/>'+
             // '<i>(圖片取自google map)</i>',
+
+            // changhua
+            // 1
+            '<h2>中華大家功德會(彰化)</h2>'+
+            '<span><a href="http://www.dajia.org.tw/RWD01/OnePage.aspx?tid=89">http://www.dajia.org.tw/RWD01/OnePage.aspx?tid=89</a></span><br/>'+
+            '<span>地址：彰化縣員林是莒光路513號(員林基督教醫院對面)</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+
+            // kaohsiung
+            // 1
+            '<h2>阿榮通訊食物銀行</h2>'+
+            '<span><a href="https://www.facebook.com/groups/217928308379515/">https://www.facebook.com/groups/217928308379515/</a></span><br/>'+
+            '<span>地址：高雄市苓雅區光華一路142號</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 2
+            '<h2>阿們愛心冰箱(Solidarity Fridge)</h2>'+
+            '<span><a href="https://www.facebook.com/groups/350488518616424/">https://www.facebook.com/groups/350488518616424/</a></span><br/>'+
+            '<span>地址：高雄市鳳山區青年路二段518巷5號</span><br/>'+
+            '<span>時間：週一至週五 10:00 - 12:00、18:00 - 19:00</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 3
+            '<h2>幸運草複合式餐飲</h2>'+
+            '<span><a href="https://www.facebook.com/pages/%E5%B9%B8%E9%81%8B%E8%8D%89%E8%A4%87%E5%90%88%E5%BC%8F%E9%A4%90%E9%A3%B2/676123805824411">https://www.facebook.com/pages/%E5%B9%B8%E9%81%8B%E8%8D%89%E8%A4%87%E5%90%88%E5%BC%8F%E9%A4%90%E9%A3%B2/676123805824411</a></span><br/>'+
+            '<span>地址：高雄市楠梓區海專路155號</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+
+            //chiayi
+            // 1
+            '<h2>分享愛 愛心冰箱</h2>'+
+            '<span>地址：嘉義市新民路728巷14號</span><br/>'
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
         ];
         
         //建立地圖 marker 的集合
         var marker_config = [{
+            // taipei
+            // 1
+            position: {lat: 25.02013, lng: 121.5316},
+            map: map,
+            title:'享食站 半路咖啡 - Food Hub Halfway Cafe',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 2
+            position: {lat: 25.02886, lng: 121.53134},
+            map: map,
+            title:'515 Cafe&amp;books 享食冰箱',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 3
+            position: {lat: 25.03687, lng: 121.55385},
+            map: map,
+            title:'RobinFood 羅濱富',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 4
+            position: {lat: 25.02938, lng: 121.50635},
+            map: map,
+            title:'書屋花甲',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 5
+            position: {lat: 25.10078, lng: 121.49592},
+            map: map,
+            title:'社子島愛心free食物銀行',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 6
+            position: {lat: 25.03284, lng: 121.52037},
+            map: map,
+            title:'新營里辦公室',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 7
+            position: {lat: 25.02715, lng: 121.51018},
+            map: map,
+            title:'永昌里辦公處',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 8
+            position: {lat: 25.02529, lng: 121.51683},
+            map: map,
+            title:'螢圃里辦公室',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 9
+            position: {lat: 25.04506, lng: 121.52543},
+            map: map,
+            title:'梅花里辦公室',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 10
+            position: {lat: 25.02242, lng: 121.52467},
+            map: map,
+            title:'頂東里辦公室',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 11
+            position: {lat: 25.01672, lng: 121.52522},
+            map: map,
+            title:'林興里辦公處',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },
+
+            //xinbei
+            {
+            // 1
+            position: {lat: 25.02526, lng: 121.47142},
+            map: map,
+            title:'板橋愛心free食物銀行',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 2
+            position: {lat: 25.01153, lng: 121.44533},
+            map: map,
+            title:'分享愛社團-板橋愛心冰箱站',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 3
+            position: {lat: 25.02596, lng: 121.41246},
+            map: map,
+            title:'愛心冰箱新莊站',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },            
+            
+            // taichung
+            {
             // 1
             position: {lat: 24.13973, lng: 120.66333},
             map: map,
             title:'共享冰箱 Food Sharing Station@自己的房間',
-            icon: "https://i.ibb.co/MPNg0hD/icon-32.png"
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
             },{
             // 2
             position: {lat: 24.13349, lng: 120.64559},
@@ -69,14 +452,53 @@
             position: {lat: 24.16353, lng: 120.67458},
             map: map,
             title:'中華大家功德會(台中北區)',
-            icon: {url:"https://img.icons8.com/color/32/000000/fridge.png", border: 1}
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },
+            
+            // changhua
+            {
+            // 1
+            position: {lat: 23.96245, lng: 120.56645},
+            map: map,
+            title:'中華大家功德會(彰化)',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },
+
+            // kaohsiung
+            {
+            // 1
+            position: {lat: 22.62133, lng: 120.3168},
+            map: map,
+            title:'阿榮通訊食物銀行',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 2
+            position: {lat: 22.64568, lng: 120.35021},
+            map: map,
+            title:'阿們愛心冰箱(Solidarity Fridge)',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 3
+            position: {lat: 22.72443, lng: 120.31434},
+            map: map,
+            title:'幸運草複合式餐飲',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },
+
+            // chiayi
+            {
+            // 1
+            position: {lat: 23.46901, lng: 120.44055},
+            map: map,
+            title:'分享愛 愛心冰箱',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
             }
         ];
-  
+            
             //設定 Info window 內容
             info_config.forEach(function(e,i){
                 infoWindows[i] = new google.maps.InfoWindow({
-                    content: e
+                    content: e,
                 });
             });
   
@@ -85,11 +507,14 @@
             marker_config.forEach(function(e,i){
                 markers[i] = new google.maps.Marker(e);
                 markers[i].setMap(map);
-                markers[i].addListener('click', openMark);
-                function openMark() {
-                    infoWindows[i].open(map, markers[i]);
+                markers[i].addListener('click', view);
+                function view() {
                     viewClick = marker_config[i].title;
                     document.getElementById('viewClick').innerHTML = viewClick;
+                }
+                markers[i].addListener('mouseover', openMark);
+                function openMark() {
+                    infoWindows[i].open(map, markers[i]);
                 }
                 markers[i].addListener('mouseout', closeMark);
                 function closeMark() {
