@@ -38,4 +38,31 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.patch("/:_id", async (req, res) => {
+  const { _id } = req.params;
+  let food = await Food.findOne({ _id });
+
+  if (!food) {
+    res.status(404);
+    return res.json({
+      success: false,
+      message: "Food not found",
+    });
+  }
+
+  if (food.quantity > 1) {
+    food.quantity -= 1;
+    try {
+      await food.save();
+      res.status(200).send("Successfully order the food");
+    } catch (err) {
+      res.status(400).send({ success: false, message: err });
+    }
+  } else {
+    Food.findOneAndDelete({ _id })
+      .then(() => res.status(200).send("Successfully order the food"))
+      .catch(err => res.send({ success: false, message: err }));
+  }
+});
+
 module.exports = router;

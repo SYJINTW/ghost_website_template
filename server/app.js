@@ -29,7 +29,7 @@ const authRoute = require("./routes").authRoute;
 const foodRoute = require("./routes").foodRoute;
 const feedbackRoute = require("./routes").feedbackRoute;
 app.use("/api/auth", authRoute);
-app.use("/api/food", foodRoute);
+app.use("/api/food", passport.authenticate("jwt", { session: false }), foodRoute);
 app.use("/api/feedback", feedbackRoute);
 
 const PORT = process.env.PORT || 8080;

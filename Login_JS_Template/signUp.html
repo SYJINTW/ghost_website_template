@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Chang-Chi Wu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="A sign up page" />
+    <title>User Sign Up</title>
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/5806baca42.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <main class="signUp">
+      <h1>User Sign Up</h1>
+      <form id="signUpForm">
+        <div>
+          <i class="fas fa-user fa-2x"></i>
+          <input type="text" placeholder="Username" id="username" autofocus />
+        </div>
+        <div>
+          <i class="fas fa-envelope fa-2x"></i>
+          <input type="email" placeholder="Email Address" id="email" />
+        </div>
+        <div>
+          <i class="fas fa-lock fa-2x"></i>
+          <input type="password" placeholder="Password" id="password" />
+        </div>
+        <button type="submit" id="register">Submit</button>
+      </form>
+      <div>
+        <a href="./index.html">Already have an account? Login Now</a>
+      </div>
+    </main>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./signUp.js"></script>
+</html>
