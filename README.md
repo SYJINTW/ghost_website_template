@@ -15,7 +15,7 @@ Template for hackathon.
 #FFFFFF  
 #000000  
 
-![](./pic/pic1_50.png =100x100)
+![](https://github.com/SYJINTW/ghost_website_template/blob/master/res/color.png)
 
 ### `<head>`
 
