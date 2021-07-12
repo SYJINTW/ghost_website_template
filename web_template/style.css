@@ -1,46 +1,46 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    box-sizing:border-box;
+    box-sizing: border-box;
 }
 
-body{
+body {
     font-family: 'Kanit', sans-serif;
 }
 
-.logo{
-    padding: 0 15px; 
+.logo {
+    padding: 0 15px;
     margin: 0 10px;
-    width:50px;
+    width: 50px;
     height: 50px;
 }
 
-.navbar{
+.navbar {
     display: flex;
     align-items: center;
     height: 60px;
     background-color: #97CFB7;
 }
 
-nav{
-    flex:1;
+nav {
+    flex: 1;
     text-align: center;
 }
 
-nav ul{
-    display:inline-block ;
+nav ul {
+    display: inline-block;
     list-style-type: none;
-    overflow:hidden;
+    overflow: hidden;
     background-color: #97CFB7;
     max-height: 50px;
 }
 
-nav ul li{
-    display:inline-block;
+nav ul li {
+    display: inline-block;
     margin-right: 20px;
 }
 
-nav ul li a{
+nav ul li a {
     display: block;
     color: #3C4959;
     text-align: center;
@@ -48,45 +48,46 @@ nav ul li a{
     text-decoration: none;
 }
 
-nav ul li a:hover:not(active){ 
+nav ul li a:hover:not(active) {
     color: white;
 }
-.login{
+
+.login {
     align-items: right;
     text-align: right;
     color: black;
     padding: 14px 50px;
     text-decoration: none;
 }
-.login:hover:not(active){ 
+
+.login:hover:not(active) {
     color: white;
 }
-.active{
+
+.active {
     color: #000;
 }
 
-.action{
+.action {
     background-color: #63A49C;
     border-radius: 30px;
     max-height: 40px;
     padding-top: 5px;
 }
 
-.action:hover{
+.action:hover {
     background-color: #4C6A77;
     border-radius: 30px;
     max-height: 40px;
     padding-top: 5px;
 }
 
-.profile{
+.profile {
     width: 0;
 }
 
-
-
-.row-1{
-    display:flex;
+.row-1 {
+    display: flex;
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -95,85 +96,94 @@ nav ul li a:hover:not(active){
     height: 600px;
     text-align: center;
 }
-.row-2{
-    display:flex;
+
+.row-2 {
+    display: flex;
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-around;
     background: url("pic/fridge-2.jpg");
-    background-size:cover;
+    background-size: cover;
     height: 300px;
     text-align: center;
 }
-.row-2 h1{
+
+.row-2 h1 {
     font-size: 5pc;
-    color:#fff;
+    color: #fff;
 }
-.col-1{
+
+.col-1 {
     flex-basis: 50%;
     min-width: 300px;
 }
-.col-1 h1{
-    font-size:xx-large;
-    color:#fff;
+
+.col-1 h1 {
+    font-size: xx-large;
+    color: #fff;
 }
-.col-1 p{
+
+.col-1 p {
     margin-top: 10px;
-    font-size:medium;
-    color:#fff;
+    font-size: medium;
+    color: #fff;
 }
-.btn{
+
+.btn {
     display: inline-block;
-    background-color:#63A49C;
-    color:#fff; 
+    background-color: #63A49C;
+    color: #fff;
     padding: 10px 40px;
     border-radius: 30px;
-    font-size:x-large;
+    font-size: x-large;
     margin: 40px 0;
     text-decoration: none;
     width: fit-content;
 }
-.btn:hover{
-    background-color:#4C6A77;
+
+.btn:hover {
+    background-color: #4C6A77;
 }
 
-.small-container{
-    margin:auto;
+.small-container {
+    margin: auto;
     padding: 50px 20px;
     background: #aaa478;
 }
-.row-contact{
-    display:flex;
+
+.row-contact {
+    display: flex;
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin:0px 20px;
+    margin: 0px 20px;
 }
-.col-3{
-    flex-basis:30%;
+
+.col-3 {
+    flex-basis: 30%;
     min-width: 250px;
     transition: transform 0.5s;
     text-align: center;
     padding: 100px, 5px;
     /* border: 5px ridge #963543 ; */
 }
-.col-3 img{
+
+.col-3 img {
     width: 80px;
     margin-top: 20px;
     border-radius: 50%;
 }
-.col-3 h2{
+
+.col-3 h2 {
     padding: 10px 0 0;
 }
 
-
-
-footer{
+footer {
     background-color: #626d86;
     text-align: center;
     color: white;
     position: relative;
     bottom: 0;
-    width:100%;
+    width: 100%;
     padding: 20px 0;
 }

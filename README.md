@@ -29,6 +29,32 @@ Template for hackathon.
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 ```
 
+### 檔案命名原則
+
+ghost_website_template
+-index.html  
+-about.html  
+-index  
+/----style  
+/--------style.css  
+/--------header-style.css  
+----js  
+/--------main.js  
+/--------action.js  
+----img  
+/--------fisrt.png  
+/--------second.jpg   
+-about  
+/----style  
+/--------style.css  
+/--------header-style.css  
+----js  
+/--------main.js  
+/--------action.js  
+----img  
+/--------fisrt.png  
+/--------second.jpg  
+
 ## Authors
 
 - [@SYJINTW](https://github.com/SYJINTW)
