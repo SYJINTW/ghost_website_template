@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <style type="text/css">
+        html, body { height: 100%; width: 100%; margin: 0; padding: 0; }
+        #map {width: 640px; height: 480px; }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="ghost.studio">
+    <title>Document</title>
+</head>
+<body>
+    <div id="map"></div>
+    <script type="text/javascript">
+    function initMap() {
+        var markers = [];
+        var infoWindows = [];
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 25.06047, lng: 121.51147},
+            zoom: 12.6
+        });
+        var geocoder = new google.maps.Geocoder();
+        console.log(geocoder);
+  
+        //info windows
+        var info_config = [
+            // 1
+            '<h2>享食站 半路咖啡 - Food Hub Halfway Cafe</h2>'+
+            '<span><a href="https://www.facebook.com/groups/FHHWK">https://www.facebook.com/groups/FHHWK</a></span><br/>'+
+            '<span>地址：台北市大安區羅斯福路三段269巷51弄9號一樓</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 2
+            '<h2>515 Cafe&amp;books 享食冰箱</h2>'+
+            '<span><a href="https://www.facebook.com/groups/137047096987597">https://www.facebook.com/groups/137047096987597</a></span><br/>'+
+            '<span>地址：台北市大安區永康街75巷22號</span><br/>'+
+            '<span>時間：週一至週日11:30 - 23:00</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 3
+            '<h2>RobinFood 羅濱富</h2>'+
+            '<span><a href="https://www.facebook.com/Share.RobinFood/">https://www.facebook.com/Share.RobinFood/</a></span><br/>'+
+            '<span>地址：台北市大安區仁愛路四段280號8樓（國泰綜合醫院）</span><br/>'+
+            '<span>時間：週一至週五 08:00 - 20:30</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 4
+            '<h2>書屋花甲</h2>'+
+            '<span><a href="https://www.facebook.com/housebook60/">https://www.facebook.com/housebook60/</a></span><br/>'+
+            '<span>地址：台北市中正區中華路二段307巷42號1樓</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 5
+            '<h2>社子島愛心free食物銀行</h2>'+
+            '<span><a href="https://www.facebook.com/392100044493153/">https://www.facebook.com/392100044493153/</a></span><br/>'+
+            '<span>地址：台北市士林區延平北路七段106、107巷</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 6
+            '<h2>新營里辦公室</h2>'+
+            '<span><a href="https://li.taipei/cp.aspx?n=D1206834DF401BE7">https://li.taipei/cp.aspx?n=D1206834DF401BE7</a></span><br/>'+
+            '<span>地址：台北市中正區寧波東街16巷2號</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 7
+            '<h2>永昌里辦公處</h2>'+
+            '<span><a href="https://li.taipei/cp.aspx?n=1B6CCF78F14C7580">https://li.taipei/cp.aspx?n=1B6CCF78F14C7580</a></span><br/>'+
+            '<span>地址：台北市中正區汀州路一段242巷5號</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 8
+            '<h2>螢圃里辦公室</h2>'+
+            '<span><a href="https://li.taipei/cp.aspx?n=300F6F13C72E308E">https://li.taipei/cp.aspx?n=300F6F13C72E308E</a></span><br/>'+
+            '<span>地址：台北市中正區重慶南路3段83巷3號</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 9
+            '<h2>梅花里辦公室</h2>'+
+            '<span><a href="https://li.taipei/cp.aspx?n=887645945840165A">https://li.taipei/cp.aspx?n=887645945840165A</a></span><br/>'+
+            '<span>地址：台北市中正區紹興北街23號</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 10
+            '<h2>頂東里辦公室</h2>'+
+            '<span><a href="https://li.taipei/cp.aspx?n=3187676576FB61A2">https://li.taipei/cp.aspx?n=3187676576FB61A2</a></span><br/>'+
+            '<span>地址：台北市中正區晉江街112巷2弄6號</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 11
+            '<h2>林興里辦公處</h2>'+
+            '<span><a href="https://li.taipei/cp.aspx?n=C39F0D639713B316">https://li.taipei/cp.aspx?n=C39F0D639713B316</a></span><br/>'+
+            '<span>地址：台北市中正區水源路21號</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+        ];
+
+        //建立地圖 marker 的集合
+        var marker_config = [{
+            // 1
+            position: {lat: 25.02013, lng: 121.5316},
+            map: map,
+            title:'享食站 半路咖啡 - Food Hub Halfway Cafe',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 2
+            position: {lat: 25.02886, lng: 121.53134},
+            map: map,
+            title:'515 Cafe&amp;books 享食冰箱',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 3
+            position: {lat: 25.03687, lng: 121.55385},
+            map: map,
+            title:'RobinFood 羅濱富',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 4
+            position: {lat: 25.02938, lng: 121.50635},
+            map: map,
+            title:'書屋花甲',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 5
+            position: {lat: 25.10078, lng: 121.49592},
+            map: map,
+            title:'社子島愛心free食物銀行',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 6
+            position: {lat: 25.03284, lng: 121.52037},
+            map: map,
+            title:'新營里辦公室',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 7
+            position: {lat: 25.02715, lng: 121.51018},
+            map: map,
+            title:'永昌里辦公處',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 8
+            position: {lat: 25.02529, lng: 121.51683},
+            map: map,
+            title:'螢圃里辦公室',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 9
+            position: {lat: 25.04506, lng: 121.52543},
+            map: map,
+            title:'梅花里辦公室',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 10
+            position: {lat: 25.02242, lng: 121.52467},
+            map: map,
+            title:'頂東里辦公室',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 11
+            position: {lat: 25.01672, lng: 121.52522},
+            map: map,
+            title:'林興里辦公處',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            }
+        ];
+  
+            //設定 Info window 內容
+            info_config.forEach(function(e,i){
+                infoWindows[i] = new google.maps.InfoWindow({
+                    content: e
+                });
+            });
+  
+  
+            //標出 marker
+            marker_config.forEach(function(e,i){
+                markers[i] = new google.maps.Marker(e);
+                markers[i].setMap(map);
+                markers[i].addListener('mouseover', openMark);
+                function openMark() {
+                    infoWindows[i].open(map, markers[i]);
+                }
+                markers[i].addListener('mouseout', closeMark);
+                function closeMark() {
+                    infoWindows[i].close(map, markers[i]);
+                }
+            });
+    
+            function _geocoder(address){
+                geocoder.geocode({
+                    address: address
+                }, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        LatLng = results[0].geometry.location;
+                        return results;
+                    }
+                });
+            }
+  
+            console.log(_geocoder('台北市'));
+        }
+        </script>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDI2xSJtMpDx--RdHTS26VSSF4s4eaq4_g&callback=initMap">
+        </script>
+    </body>
+</html>
