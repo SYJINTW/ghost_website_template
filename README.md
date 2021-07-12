@@ -15,6 +15,8 @@ Template for hackathon.
 #FFFFFF  
 #000000  
 
+![](./pic/pic1_50.png =100x100)
+
 ### `<head>`
 
 ```html
