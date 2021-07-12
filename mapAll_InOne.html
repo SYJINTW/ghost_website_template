@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <style type="text/css">
+        html, body { height: 100%; width: 100%; margin: 0; padding: 0;}
+        #map {width: 640px; height: 480px; margin: 15px;}
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="ghost.studio">
+    <title>Document</title>
+</head>
+<body>
+    <div id="viewClick" style="text-align: center;"></div>
+    <div id="map"></div>
+    <script type="text/javascript">
+        var viewClick = "";
+        function initMap() {
+        var markers = [];
+        var infoWindows = [];
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 24.14849, lng: 120.6613},
+            zoom: 13
+        });
+        var geocoder = new google.maps.Geocoder();
+        console.log(geocoder);
+
+        
+        //info windows
+        var info_config = [
+            
+            // taichung
+            // 1
+            '<h2>共享冰箱 Food Sharing Station@自己的房間</h2>'+
+            '<span><a href="https://www.facebook.com/groups/275738656282978/">https://www.facebook.com/groups/275738656282978/</a></span><br/>'+
+            '<span>地址：台中市五權西路一段71巷3弄1號(國美館對面 五權西三街13號與15號中間的通道進入)</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 2
+            '<h2>中華大家功德會(台中南屯區)</h2>'+
+            '<span><a href="http://www.dajia.org.tw/RWD01/OnePage.aspx?tid=89">http://www.dajia.org.tw/RWD01/OnePage.aspx?tid=89</a></span><br/>'+
+            '<span>地址：台中市南屯區文心南三路536-1號(向心里里辦公室)</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+            // 3
+            '<h2>中華大家功德會(台中北區)</h2>'+
+            '<span><a href="http://www.dajia.org.tw/RWD01/OnePage.aspx?tid=89">http://www.dajia.org.tw/RWD01/OnePage.aspx?tid=89</a></span><br/>'+
+            '<span>地址：台中市北區中清路一段296號</span><br/>',
+            // '<img class="infoImg" src=""><br/>'+
+            // '<i>(圖片取自google map)</i>',
+        ];
+        
+        //建立地圖 marker 的集合
+        var marker_config = [{
+            // 1
+            position: {lat: 24.13973, lng: 120.66333},
+            map: map,
+            title:'共享冰箱 Food Sharing Station@自己的房間',
+            icon: "https://i.ibb.co/MPNg0hD/icon-32.png"
+            },{
+            // 2
+            position: {lat: 24.13349, lng: 120.64559},
+            map: map,
+            title:'中華大家功德會(台中南屯區)',
+            icon: "https://img.icons8.com/color/32/000000/fridge.png"
+            },{
+            // 3
+            position: {lat: 24.16353, lng: 120.67458},
+            map: map,
+            title:'中華大家功德會(台中北區)',
+            icon: {url:"https://img.icons8.com/color/32/000000/fridge.png", border: 1}
+            }
+        ];
+  
+            //設定 Info window 內容
+            info_config.forEach(function(e,i){
+                infoWindows[i] = new google.maps.InfoWindow({
+                    content: e
+                });
+            });
+  
+  
+            //標出 marker
+            marker_config.forEach(function(e,i){
+                markers[i] = new google.maps.Marker(e);
+                markers[i].setMap(map);
+                markers[i].addListener('click', openMark);
+                function openMark() {
+                    infoWindows[i].open(map, markers[i]);
+                    viewClick = marker_config[i].title;
+                    document.getElementById('viewClick').innerHTML = viewClick;
+                }
+                markers[i].addListener('mouseout', closeMark);
+                function closeMark() {
+                    infoWindows[i].close(map, markers[i]);
+                }
+            });
+            console.log(viewClick);
+            function _geocoder(address){
+                geocoder.geocode({
+                    address: address
+                }, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        LatLng = results[0].geometry.location;
+                        return results;
+                    }
+                });
+            }
+
+        }
+
+        </script>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDI2xSJtMpDx--RdHTS26VSSF4s4eaq4_g&callback=initMap">
+        </script>
+    </body>
+</html>
