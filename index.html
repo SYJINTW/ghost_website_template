@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <style type="text/css">
+        html, body { height: 100%; width: 100%; margin: 0; padding: 0; }
+        #map {width: 640px; height: 480px}
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="ghost.studio">
+    <title>Document</title>
+</head>
+<body>
+    <div id="map"></div>
+    <script type="text/javascript">
+    let map;
+    function initMap() {
+        var markers = [];
+        var infoWindows = [];
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 25.04, lng: 121.512},
+            zoom: 14
+        });
+        var geocoder = new google.maps.Geocoder();
+        console.log(geocoder);
+  
+        //info windows
+        var info_config = [
+            '<h2>總統府</h2>'+
+            '<span>這是總統府喔！</span><br/>'+
+            '<img class="infoImg" src="https://www.president.gov.tw/Issue/470#banner"><br/>'+
+            '<i>(圖片取自總統府網站)</i>',
+            '<h2>民主紀念館</h2>'+
+            '<span>不是中正紀念堂喔</span><br/>'+
+            '<img class="infoImg" src="http://www.cksmh.gov.tw/upload/article/4248b77496baac99a290f6f202bfe786.jpg"><br/>'+
+            '<i>(圖片取自民主紀念館網站)</i>'
+        ];
+
+        //建立地圖 marker 的集合
+        var marker_config = [{
+            position: {lat: 25.04, lng: 121.512},
+            map: map,
+            title:'總統府',
+            icon: "https://img.icons8.com/color/42/000000/fridge.png"
+            },{
+            position: {lat: 25.035, lng: 121.519},
+            map: map,
+            title:'民主紀念館'
+        }];
+  
+        //設定 Info window 內容
+        info_config.forEach(function(e,i){
+            infoWindows[i] = new google.maps.InfoWindow({
+                content: e
+            });
+        });
+  
+  
+        //標出 marker
+        marker_config.forEach(function(e,i){
+            markers[i] = new google.maps.Marker(e);
+            markers[i].setMap(map);
+            markers[i].addListener('click', function() {
+                infoWindows[i].open(map, markers[i]);
+            });
+        });  
+    
+        function _geocoder(address){
+            geocoder.geocode({
+                address: address
+            }, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    LatLng = results[0].geometry.location;
+                    return results;
+                }
+            });
+        }
+  
+        console.log(_geocoder('高雄市'));
+    }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDI2xSJtMpDx--RdHTS26VSSF4s4eaq4_g&callback=initMap">
+   </script>
+    <!-- <script src = "./intro/Class.js"></script> -->
+</body>
+</html>
