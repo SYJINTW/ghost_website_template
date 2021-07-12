@@ -1,0 +1,239 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: 'Kanit', sans-serif;
+}
+
+.logo{
+    padding: 0 15px; 
+    margin: 0 10px;
+    width:50px;
+    height: 50px;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    height: 60px;
+    background-color: #97CFB7;
+}
+
+nav{
+    flex:1;
+    text-align: center;
+}
+
+nav ul{
+    display:inline-block ;
+    list-style-type: none;
+    overflow:hidden;
+    background-color: #97CFB7;
+    max-height: 50px;
+}
+
+nav ul li{
+    display:inline-block;
+    margin-right: 20px;
+}
+
+nav ul li a{
+    display: block;
+    color: #3C4959;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+nav ul li a:hover:not(active){ 
+    color: white;
+}
+.login{
+    align-items: right;
+    text-align: right;
+    color: black;
+    padding: 14px 50px;
+    text-decoration: none;
+}
+.login:hover:not(active){ 
+    color: white;
+}
+.active{
+    color: #000;
+}
+
+.action{
+    background-color: #63A49C;
+    border-radius: 30px;
+    max-height: 40px;
+    padding-top: 5px;
+}
+
+.action:hover{
+    background-color: #4C6A77;
+    border-radius: 30px;
+    max-height: 40px;
+    padding-top: 5px;
+}
+
+.profile{
+    width: 0;
+}
+
+
+
+.row-1{
+    display:flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background: url("pic/fridge-1.jpg");
+    background-size: cover;
+    height: 600px;
+    text-align: center;
+}
+.row-2{
+    display:flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background: url("pic/fridge-2.jpg");
+    background-size:cover;
+    height: 300px;
+    text-align: center;
+}
+.row-2 h1{
+    font-size: 5pc;
+    color:#fff;
+}
+.col-1{
+    flex-basis: 50%;
+    min-width: 300px;
+}
+.col-1 h1{
+    font-size:xx-large;
+    color:#fff;
+}
+.col-1 p{
+    margin-top: 10px;
+    font-size:medium;
+    color:#fff;
+}
+.btn{
+    display: inline-block;
+    background-color:#63A49C;
+    color:#fff; 
+    padding: 10px 40px;
+    border-radius: 30px;
+    font-size:x-large;
+    margin: 40px 0;
+    text-decoration: none;
+    width: fit-content;
+}
+.btn:hover{
+    background-color:#4C6A77;
+}
+
+.small-container{
+    margin:auto;
+    padding: 50px 20px;
+    background: #aaa478;
+}
+.row-contact{
+    display:flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin:0px 20px;
+}
+.col-3{
+    flex-basis:30%;
+    min-width: 250px;
+    transition: transform 0.5s;
+    text-align: center;
+    padding: 100px, 5px;
+    /* border: 5px ridge #963543 ; */
+}
+.col-3 img{
+    width: 80px;
+    margin-top: 20px;
+    border-radius: 50%;
+}
+.col-3 h2{
+    padding: 10px 0 0;
+}
+
+.contact-row{
+    padding: 50px 50px 100px;
+    background: #dfdada;
+    border-left: 100px ridge #4C6A77;
+    display: flex;
+}
+
+.contactus h2{
+    position: relative;
+    padding: 0px 20px;
+    border-bottom: 7px solid rgba(17, 202, 171, 0.8);
+    width: 60%;
+    max-width: 400px;
+    margin:0 100px;
+}
+textarea{
+    min-height: 200px;
+}
+.contact-box{
+    padding: 0px;
+    margin: 0 50px;
+    display: grid;
+    align-items: right;
+    width : 100%;
+}
+.contact-box .contactus{
+    flex:1;
+}
+.field{
+    width: 60%;
+    max-width: 600px;
+    padding: 5px 10px;
+    outline: none;
+    border: 2px solid #4C6A77;
+    background-color: rgba(230, 230, 230, 0.6);
+    font-size: 1.1rem;
+    transition: 0.3s;
+    margin: 10px 0px;
+}
+.field:hover{
+    background-color: rgba(0,0,0,0.1);
+}
+.field:focus{
+    background-color: #fff;
+    border: 2px solid rgba(30, 85, 250, 0.47);
+}
+.contactbtn{
+    display: inline-block;
+    background-color:#63A49C;
+    color:#fff; 
+    padding: 10px 40px;
+    border-radius: 30px;
+    margin: 0 0 0 40%;
+    text-decoration: none;
+    width: fit-content;
+    cursor:pointer;
+}
+.contactbtn:hover{
+    background-color:#4C6A77;
+}
+
+
+footer{
+    background-color: #626d86;
+    text-align: center;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width:100%;
+    padding: 20px 0;
+}
