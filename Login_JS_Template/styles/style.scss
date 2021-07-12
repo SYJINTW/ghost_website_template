@@ -1,0 +1,89 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Oswald", sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../pictures/background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+main {
+  width: 30vw;
+  height: 45vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 40px;
+  padding: 1rem;
+  box-shadow: 3px 3px 5px 2px rgb(107, 107, 107);
+
+  h1 {
+    font-size: 3rem;
+    padding-top: 0.5rem;
+  }
+
+  form {
+    height: 70%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    div {
+      width: 80%;
+      display: flex;
+      justify-content: space-around;
+
+      input {
+        width: 80%;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        padding-left: 0.5rem;
+        border: 2px solid black;
+      }
+    }
+
+    button {
+      width: 12vw;
+      height: 6vh;
+      border-radius: 10px;
+      font-size: 1.5rem;
+      background-color: white;
+      border: 2px solid black;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  div {
+    a {
+      font-size: 1.15rem;
+      color: black;
+      align-self: center;
+      text-decoration: none;
+    }
+  }
+}
+
+main.signUp {
+  height: 55vh;
+
+  form {
+    height: 75%;
+  }
+}

@@ -22,14 +22,15 @@ const feedbackValidation = data => {
   const schema = Joi.object({
     name: Joi.string().required(),
     email: Joi.string().email(),
-    content: Joi.string().required(),
+    subject: Joi.string().required(),
+    message: Joi.string().required(),
   });
   return schema.validate(data);
 };
 
 const foodValidation = data => {
   const schema = Joi.object({
-    title: Joi.string().required(),
+    name: Joi.string().required(),
     image: Joi.string().required(),
     quantity: Joi.string().required(),
     store: Joi.string().required().valid("常溫", "冷藏", "冷凍"),
